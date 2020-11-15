@@ -1,3 +1,5 @@
-include /usr/share/nano/*
+include /usr/share/nano/*.nanorc
+set linenumbers
 set mouse
 set autoindent
+set locking
