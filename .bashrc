@@ -12,7 +12,7 @@ shopt -s histappend
 # Aliases
 alias ls='ls --color=auto'
 alias open='xdg-open'
-alias rm='rm -vi'
+alias rm='rm -vI'
 alias cp='cp -vi'
 alias mv='mv -vi'
 
