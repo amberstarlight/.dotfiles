@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # https://systemcrafters.net/managing-your-dotfiles/using-gnu-stow/
 # Sync dotfiles repo and ensure that dotfiles are tangled correctly afterward

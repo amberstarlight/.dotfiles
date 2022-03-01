@@ -11,10 +11,13 @@ shopt -s histappend
 
 # Aliases
 alias ls='ls --color=auto'
-alias open='xdg-open'
 alias rm='rm -vI'
 alias cp='cp -vi'
 alias mv='mv -vi'
+
+if [ `uname` == "Linux" ]; then # we don't have macOS's 'open'
+  alias open='xdg-open'
+fi
 
 # Prompt
 promptTime="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\D{%Y-%m-%d} \@\[$(tput sgr0)\]"
@@ -24,9 +27,8 @@ promptHostDirGit="\n\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput 
 promptEnd="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 PS1=$promptTime$promptHostDirGit$promptEnd
 
-
-
 # Exports
 export EDITOR=/usr/bin/nano
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
+export PATH="/usr/local/bin:$PATH" # for picking the right bash on macOS
