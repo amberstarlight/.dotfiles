@@ -17,6 +17,9 @@ alias mv='mv -vi'
 
 if [ `uname` == "Linux" ]; then # we don't have macOS's 'open'
   alias open='xdg-open'
+  export EDITOR=/usr/bin/nano
+else # we are on macOS, so we need to set the right EDITOR
+  export EDITOR=/usr/local/bin/nano
 fi
 
 # Prompt
@@ -28,7 +31,6 @@ promptEnd="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\
 PS1=$promptTime$promptHostDirGit$promptEnd
 
 # Exports
-export EDITOR=/usr/bin/nano
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 export PATH="/usr/local/bin:$PATH" # for picking the right bash on macOS
