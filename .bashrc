@@ -34,3 +34,4 @@ PS1=$promptTime$promptHostDirGit$promptEnd
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
 export PATH="/usr/local/bin:$PATH" # for picking the right bash on macOS
+export GPG_TTY=$(tty)
