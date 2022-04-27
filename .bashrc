@@ -27,6 +27,7 @@ alias tf='terraform'
 alias tfi='terraform init'
 alias tff='terraform fmt'
 alias tfv='terraform validate'
+alias tfp='terraform plan'
 alias tfa='terraform apply'
 
 # Prompt
