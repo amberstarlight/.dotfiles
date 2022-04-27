@@ -22,6 +22,13 @@ else # we are on macOS, so we need to set the right EDITOR
   export EDITOR=/usr/local/bin/nano
 fi
 
+## Special Software Aliases
+alias tf='terraform'
+alias tfi='terraform init'
+alias tff='terraform fmt'
+alias tfv='terraform validate'
+alias tfa='terraform apply'
+
 # Prompt
 promptTime="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\D{%Y-%m-%d} \@\[$(tput sgr0)\]"
 promptDir="\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]"
