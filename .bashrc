@@ -29,6 +29,8 @@ alias tff='terraform fmt'
 alias tfv='terraform validate'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+alias tfd='terraform destroy'
+alias tfo='terraform output'
 
 # Prompt
 promptTime="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\D{%Y-%m-%d} \@\[$(tput sgr0)\]"
