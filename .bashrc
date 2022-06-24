@@ -15,7 +15,7 @@ alias rm='rm -vI'
 alias cp='cp -vi'
 alias mv='mv -vi'
 
-if [ `uname` == "Linux" ]; then # we don't have macOS's 'open'
+if [ $(uname) == "Linux" ]; then # we don't have macOS's 'open'
   alias open='xdg-open'
   export EDITOR=/usr/bin/nano
 else # we are on macOS, so we need to set the right EDITOR
@@ -24,13 +24,13 @@ fi
 
 ## Special Software Aliases
 alias tf='terraform'
-alias tfi='terraform init'
-alias tff='terraform fmt'
-alias tfv='terraform validate'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
-alias tfd='terraform destroy'
-alias tfo='terraform output'
+alias tfi='tf init'
+alias tff='tf fmt'
+alias tfv='tf validate'
+alias tfp='tf plan'
+alias tfa='tf apply'
+alias tfd='tf destroy'
+alias tfo='tf output'
 
 # Prompt
 promptTime="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\D{%Y-%m-%d} \@\[$(tput sgr0)\]"
@@ -50,3 +50,19 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ $(uname -n) == "sierra" ]; then # we are on the home machine
+  export GIT_REPO_DIR=/storage/git
+fi
+
+# include Borg Backup secrets
+if [ -f "$HOME"/.borg_secrets  ]; then
+  . "$HOME"/.borg_secrets
+fi
+
+backup () {
+  $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME"/.log/"borg-$(echo "$HOSTNAME")-$(date +"%Y-%m-%d").log"
+  if [ "$1" = "shutdown" ]; then
+    sudo shutdown
+  fi
+}
