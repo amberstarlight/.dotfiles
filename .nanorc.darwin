@@ -1,9 +1,8 @@
 #
-# ~/.nanorc
+# ~/.nanorc.darwin
 #
 
-
-include /usr/share/nano/*.nanorc
+include /usr/local/nano/*.nanorc
 set linenumbers
 set mouse
 set autoindent

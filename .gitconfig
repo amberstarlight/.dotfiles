@@ -1,0 +1,29 @@
+#
+# ~/.gitconfig
+#
+
+[user]
+  name = Amber Cronin
+  signingkey = 14E7B51AF7B30CA7
+
+[alias]
+  st = "status --short --branch"
+  br = "branch --all --verbose"
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  program = gpg
+
+[help]
+  autocorrect = true
+
+[init]
+  defaultbranch = main
+
+[push]
+  autosetupremote = true
+
+[tag]
+  gpgsign = true

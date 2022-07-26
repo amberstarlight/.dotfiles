@@ -15,11 +15,13 @@ alias rm='rm -vI'
 alias cp='cp -vi'
 alias mv='mv -vi'
 
-if [ $(uname) == "Linux" ]; then # we don't have macOS's 'open'
+if [ $(uname) == "Linux" ]; then
   alias open='xdg-open'
   export EDITOR=/usr/bin/nano
-else # we are on macOS, so we need to set the right EDITOR
+  alias nano='nano --rcfile $HOME/.dotfiles/.nanorc'
+else # we are on macOS
   export EDITOR=/usr/local/bin/nano
+  alias nano='nano --rcfile $HOME/.dotfiles/.nanorc.darwin'
 fi
 
 ## Special Software Aliases
@@ -53,16 +55,16 @@ export NVM_DIR="$HOME/.nvm"
 
 if [ $(uname -n) == "sierra" ]; then # we are on the home machine
   export GIT_REPO_DIR=/storage/git
-fi
 
-# include Borg Backup secrets
-if [ -f "$HOME"/.borg_secrets  ]; then
-  . "$HOME"/.borg_secrets
-fi
-
-backup () {
-  $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME"/.log/"borg-$(echo "$HOSTNAME")-$(date +"%Y-%m-%d").log"
-  if [ "$1" = "shutdown" ]; then
-    sudo shutdown
+  # include Borg Backup secrets
+  if [ -f "$HOME"/.borg_secrets  ]; then
+    . "$HOME"/.borg_secrets
   fi
-}
+
+  backup () {
+    $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME"/.log/"borg-$(echo "$HOSTNAME")-$(date +"%Y-%m-%d").log"
+    if [ "$1" = "shutdown" ]; then
+      sudo shutdown
+    fi
+  }
+fi
