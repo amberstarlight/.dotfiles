@@ -15,7 +15,7 @@
   gpgsign = true
 
 [core]
-  excludesfile = ".gitignore"
+  excludesfile = "$HOME/.gitignore"
 
 [gpg]
   program = gpg
