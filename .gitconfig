@@ -14,6 +14,9 @@
 [commit]
   gpgsign = true
 
+[core]
+  excludesfile = ".gitignore"
+
 [gpg]
   program = gpg
 
