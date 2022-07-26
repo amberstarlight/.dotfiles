@@ -3,7 +3,8 @@
 #
 
 [user]
-  name = Amber Cronin
+  name = "Amber Cronin"
+  email = "amber@amber.vision"
   signingkey = 14E7B51AF7B30CA7
 
 [alias]
