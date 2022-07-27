@@ -1,7 +1,6 @@
 #
-# ~/.nanorc
+# ~/.nanorc.linux
 #
-
 
 include /usr/share/nano/*.nanorc
 set linenumbers

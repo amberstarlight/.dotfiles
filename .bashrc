@@ -9,62 +9,17 @@
 shopt -s checkwinsize # incase we are running on an older machine
 shopt -s histappend
 
-# Aliases
-alias ls='ls --color=auto'
-alias rm='rm -vI'
-alias cp='cp -vi'
-alias mv='mv -vi'
+files=("alias" "export" "prompt")
 
-if [ $(uname) == "Linux" ]; then
-  alias open='xdg-open'
-  export EDITOR=/usr/bin/nano
-  alias nano='nano --rcfile $HOME/.dotfiles/.nanorc'
-else # we are on macOS
-  export EDITOR=/usr/local/bin/nano
-  alias nano='nano --rcfile $HOME/.dotfiles/.nanorc.darwin'
-fi
-
-## Special Software Aliases
-alias tf='terraform'
-alias tfi='tf init'
-alias tff='tf fmt'
-alias tfv='tf validate'
-alias tfp='tf plan'
-alias tfa='tf apply'
-alias tfd='tf destroy'
-alias tfo='tf output'
-
-# Prompt
-promptTime="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\D{%Y-%m-%d} \@\[$(tput sgr0)\]"
-promptDir="\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]"
-promptGit="\n\[$(tput sgr0)\]\[\033[38;5;6m\]\[\$(git symbolic-ref --short HEAD 2>/dev/null)\]"
-promptHostDirGit="\n\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;14m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\]"
-promptEnd="\n\[$(tput sgr0)\]\[\033[38;5;8m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
-PS1=$promptTime$promptHostDirGit$promptEnd
-
-# Exports
-export HISTCONTROL=ignoreboth
-export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
-export PATH="/usr/local/bin:$PATH" # for picking the right bash on macOS
-export GPG_TTY=$(tty)
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if [ $(uname -n) == "sierra" ]; then # we are on the home machine
-  export GIT_REPO_DIR=/storage/git
-
-  # include Borg Backup secrets
-  if [ -f "$HOME"/.borg_secrets  ]; then
-    . "$HOME"/.borg_secrets
+if [ "$(uname)" == "Linux" ]; then
+  files+=("linux")
+  if [ "$(uname -n)" == "sierra" ]; then
+    files+=("sierra")
   fi
-
-  backup () {
-    $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME"/.log/"borg-$(echo "$HOSTNAME")-$(date +"%Y-%m-%d").log"
-    if [ "$1" = "shutdown" ]; then
-      sudo shutdown
-    fi
-  }
+else
+  files+=("darwin")
 fi
+
+for file in "${files[@]}"; do
+  source "./bash/$file.sh"
+done
