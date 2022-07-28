@@ -8,6 +8,9 @@ alias cp='cp -vi'
 alias mv='mv -vi'
 alias path='echo -e ${PATH//:/\\n}'
 
+# git
+alias gist='git st'
+
 # Terraform
 alias tf='terraform'
 alias tfi='tf init'
