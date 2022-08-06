@@ -2,11 +2,12 @@
 # alias.sh
 #
 
-alias ls='ls --color=auto'
-alias rm='rm -vI'
 alias cp='cp -vi'
+alias ls='ls --color=auto'
 alias mv='mv -vi'
+alias nano='nano --rcfile ${NANO_RC_FILE}'
 alias path='echo -e ${PATH//:/\\n}'
+alias rm='rm -vI'
 
 # git
 alias gist='git st'
