@@ -2,9 +2,10 @@
 # export.sh
 #
 
+export COLUMNS
+export GPG_TTY=$(tty)
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:??:[ ]*:clear:exit:logout"
-export GPG_TTY=$(tty)
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
