@@ -27,9 +27,11 @@
 
 [init]
   defaultbranch = main
+  templateDir = "$HOME/.git-template"
 
 [push]
   autosetupremote = true
+  default = upstream
 
 [tag]
   gpgsign = true
