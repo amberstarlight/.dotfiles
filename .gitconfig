@@ -27,7 +27,7 @@
 
 [init]
   defaultbranch = main
-  templateDir = "$HOME/.git-template"
+  templateDir = "~/.git-template"
 
 [push]
   autosetupremote = true
