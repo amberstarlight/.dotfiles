@@ -2,6 +2,7 @@
 # alias.sh
 #
 
+alias back='cd -'
 alias cp='cp -vi'
 alias ls='ls --color=auto'
 alias mv='mv -vi'
