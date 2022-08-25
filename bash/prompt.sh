@@ -31,14 +31,18 @@ RST="\[$(tput sgr0)\]"
 HOST="\h"
 USER="\u"
 WDIR="\w"
+DATE="\D{%Y-%m-%d}"
+TIME="\A"
 
 # Determine git branch
-gitBr="\[\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\]"
+gitBranch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 
-promptTime="${HI_GRY}\D{%Y-%m-%d} \@${RST}"
+promptTime="${HI_GRY}${DATE} ${TIME}${RST}"
 promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}${ST_GRN}${HOST}${RST}"
 promptDir="${BLD}${HI_RED}${WDIR}${RST}"
-promptGit="${HI_CYN}${gitBr}${RST}"
+promptGit="${HI_CYN}\$(gitBranch)${RST}"
 promptEnd="\n${HI_GRY}\$ ${RST}"
 
 PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit}${promptEnd}"

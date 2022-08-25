@@ -40,6 +40,8 @@ else
   stow .
 fi
 
+source ~/.bashrc
+
 if [ "$(uname)" == "Darwin" ]; then
   brew bundle install
 fi
