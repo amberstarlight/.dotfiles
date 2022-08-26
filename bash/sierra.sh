@@ -7,7 +7,7 @@ if [ $(uname -n) == "sierra" ]; then # we are on the home machine
 
   # include Borg Backup secrets
   if [ -f "$HOME"/.borg_secrets  ]; then
-    . "$HOME"/.borg_secrets
+    source "$HOME"/.borg_secrets
   fi
 
   backup () {
