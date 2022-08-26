@@ -3,13 +3,12 @@
 # https://systemcrafters.net/managing-your-dotfiles/using-gnu-stow/
 # Sync dotfiles repo and ensure that dotfiles are tangled correctly afterward
 
-GREEN='\033[1;32m'
 BLUE='\033[1;34m'
 RED='\033[1;30m'
 NC='\033[0m'
 
 # Navigate to the directory of this script (generally ~/.dotfiles/.bin)
-cd $(dirname $(readlink -f $0))
+cd "$(dirname "$(readlink -f "$0")")" || exit 1
 cd ..
 
 echo -e "${BLUE}Stashing existing changes...${NC}"
@@ -31,10 +30,10 @@ if [[ $needs_pop -eq 1 ]]; then
 fi
 
 unmerged_files=$(git diff --name-only --diff-filter=U)
-if [[ ! -z $unmerged_files ]]; then
+if [[ -n $unmerged_files ]]; then
   echo -e "${RED}The following files have merge conflicts after popping the stash:${NC}"
   echo
-  printf %"s\n" $unmerged_files  # Ensure newlines are printed
+  printf %"s\n" "$unmerged_files"  # Ensure newlines are printed
 else
   # Run stow to ensure all new dotfiles are linked
   stow .
@@ -45,3 +44,5 @@ source ~/.bashrc
 if [ "$(uname)" == "Darwin" ]; then
   brew bundle install
 fi
+
+exit 0

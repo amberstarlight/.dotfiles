@@ -1,8 +1,10 @@
+# shellcheck shell=bash
+
 #
 # sierra.sh
 #
 
-if [ $(uname -n) == "sierra" ]; then # we are on the home machine
+if [ "$(uname -n)" == "sierra" ]; then # we are on the home machine
   export GIT_REPO_DIR=/storage/git
 
   # include Borg Backup secrets
@@ -11,7 +13,7 @@ if [ $(uname -n) == "sierra" ]; then # we are on the home machine
   fi
 
   backup () {
-    $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME"/.log/"borg-$(echo "$HOSTNAME")-$(date +"%Y-%m-%d").log"
+    $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME/.log/borg-sierra-$(date +"%Y-%m-%d").log"
     if [ "$1" = "shutdown" ]; then
       sudo shutdown
     fi
