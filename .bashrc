@@ -11,7 +11,7 @@
 shopt -s checkwinsize # incase we are running on an older machine
 shopt -s histappend
 
-files=("alias" "export" "prompt")
+files=("alias" "export" "functions" "prompt")
 
 if [ "$(uname)" == "Linux" ]; then
   files+=("linux")
