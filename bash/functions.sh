@@ -5,11 +5,7 @@
 #
 
 dot_clean () {
-  dir=".";
-
-  if [ -n "$1" ]; then
-    dir="$1";
-  fi
+  local dir=${1:-.};
 
   find "$dir" -type f \( 	\
     -iname "._*" -o		\
