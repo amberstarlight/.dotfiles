@@ -4,19 +4,24 @@
 # functions.sh
 #
 
+optional_s () {
+  if [ ! "$1" -eq 1 ]; then
+    env echo -n "s";
+  fi
+}
+
 dot_clean () {
   local dir=${1:-.};
-  local tmp_file=".tmp-$(tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 10 | head -n 1)";
+  local deleted_count;
 
-  find "$dir" -maxdepth 1 -type f \(     \
-    -iname "._*" -o                      \
-    -iname ".DS_Store" -o                \
-    -iname ".Spotlight-V100" -o          \
-    -iname ".Trashes" -o                 \
-    -iname "Thumbs.db" -o                \
-    -iname ".apdisk"                     \
-  \) -delete -fprintf "$tmp_file" "$dir";
+  deleted_count=$(find "$dir" -maxdepth 1 -type f \( \
+    -iname "._*" -o                                  \
+    -iname ".DS_Store" -o                            \
+    -iname ".Spotlight-V100" -o                      \
+    -iname ".Trashes" -o                             \
+    -iname "Thumbs.db" -o                            \
+    -iname ".apdisk"                                 \
+  \) -delete -print | wc -l);
 
-  echo "Processed $(wc -c <"$tmp_file") items.";
-  \rm "$tmp_file";
+  env echo -n "Processed $deleted_count item$(optional_s "$deleted_count")."
 }
