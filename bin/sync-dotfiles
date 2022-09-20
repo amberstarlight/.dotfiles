@@ -40,7 +40,7 @@ fi
 echo -e "${BLUE}Dotfiles updated. Source ~/.bashrc to use latest.${NC}"
 
 if [ "$(uname)" == "Darwin" ]; then
-  echo "${BLUE}Updating brew packages...${NC}"
+  echo -e "${BLUE}Updating brew packages...${NC}"
   brew bundle install
 fi
 
