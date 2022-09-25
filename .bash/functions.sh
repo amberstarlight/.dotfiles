@@ -25,3 +25,7 @@ dot_clean () {
 
   env echo -n "Processed $deleted_count item$(optional_s "$deleted_count")."
 }
+
+mkcdir () {
+  mkdir -p -- "$1" && cd -P "$1" || return
+}
