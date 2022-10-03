@@ -42,8 +42,19 @@ gitBranch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+# Show SSH status through colour of hostname
+hostColour() {
+  if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
+    # we are SSH'd
+    echo "${HI_PRP}";
+  else
+    # not SSH'd
+    echo "${ST_GRN}";
+  fi
+}
+
 promptTime="${HI_GRY}${DATE} ${TIME}${RST}"
-promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}${ST_GRN}${HOST}${RST}"
+promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}$(hostColour)${HOST}${RST}"
 promptDir="${BLD}${HI_RED}${WDIR}${RST}"
 promptGit="${HI_CYN}\$(gitBranch)${RST}"
 promptEnd="\n${HI_GRY}\$ ${RST}"
