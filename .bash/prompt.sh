@@ -46,7 +46,7 @@ gitBranch() {
 hostColour() {
   if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
     # we are SSH'd
-    echo "${HI_PRP}";
+    echo "${HI_BLU}";
   else
     # not SSH'd
     echo "${ST_GRN}";
