@@ -15,3 +15,7 @@ fi
 backup () {
   $GIT_REPO_DIR/backup/backup.sh |& tee -a "$HOME/.log/borg-sierra-$(date +"%Y-%m-%d").log"
 }
+
+skip-discord-update () {
+  sed -i '2 i \ \ "SKIP_HOST_UPDATE": true,' "$HOME/.config/discord/settings.json"
+}
