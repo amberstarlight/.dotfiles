@@ -29,3 +29,33 @@ dot_clean () {
 mkcdir () {
   mkdir -p -- "$1" && cd -P "$1" || return
 }
+
+git_all () {
+  for repository in */.git; do # TODO: support arg here
+    (
+      echo "$repository";
+      cd "$repository"/.. || return;
+
+      CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      DEFAULT_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-)
+
+      # check if symbolic link to origin/HEAD exists
+      git rev-parse --abbrev-ref origin/HEAD >/dev/null 2>&1;
+
+      if [ $? -eq 128 ]; then
+        # create the symbolic ref before we attempt to use it
+        git remote set-head origin -a;
+      fi
+
+      # insert stashing
+
+      if [ ! "$CURRENT_BRANCH" == "$DEFAULT_BRANCH"  ]; then
+        git checkout "$DEFAULT_BRANCH";
+      fi
+
+      # git pull;
+
+      # insert stash popping
+    );
+  done
+}
