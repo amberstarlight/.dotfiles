@@ -24,4 +24,5 @@ _darcs
 ^/COPYING
 
 /bin
+/bash
 \.pre-commit-config.yaml

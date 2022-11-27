@@ -23,5 +23,5 @@ else
 fi
 
 for file in "${files[@]}"; do
-  source "$HOME/.dotfiles/.bash/$file.sh"
+  source "$HOME/.dotfiles/bash/$file.sh"
 done
