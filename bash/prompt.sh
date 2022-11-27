@@ -39,9 +39,9 @@ TIME="\A"
 
 hostColour() {
   if is_ssh; then
-    echo -e "${HI_BLU}"
+    echo "${HI_BLU}"
   else
-    echo -e "${ST_GRN}"
+    echo "${ST_GRN}"
   fi
 }
 
