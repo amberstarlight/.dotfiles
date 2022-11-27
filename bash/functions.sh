@@ -95,9 +95,9 @@ git_default_branch() {
 
 is_ssh() {
   if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
-    return 1
-  else
     return 0
+  else
+    return 1
   fi
 }
 
