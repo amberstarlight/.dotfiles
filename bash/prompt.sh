@@ -38,7 +38,7 @@ DATE="\D{%Y-%m-%d}"
 TIME="\A"
 
 hostColour() {
-  if [[ "$(is_ssh)" -eq 1 ]]; then
+  if is_ssh; then
     echo -e "${HI_BLU}"
   else
     echo -e "${ST_GRN}"
