@@ -37,26 +37,18 @@ WDIR="\w"
 DATE="\D{%Y-%m-%d}"
 TIME="\A"
 
-# Determine git branch
-gitBranch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-# Show SSH status through colour of hostname
 hostColour() {
-  if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
-    # we are SSH'd
-    echo "${HI_BLU}";
+  if [[ "$(is_ssh)" -eq 1 ]]; then
+    echo "${HI_BLU}"
   else
-    # not SSH'd
-    echo "${ST_GRN}";
+    echo "${ST_GRN}"
   fi
 }
 
 promptTime="${HI_GRY}${DATE} ${TIME}${RST}"
 promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}$(hostColour)${HOST}${RST}"
 promptDir="${BLD}${HI_RED}${WDIR}${RST}"
-promptGit="${HI_CYN}\$(gitBranch)${RST}"
+promptGit="${HI_CYN}(\$(git_current_branch))${RST}"
 promptEnd="\n${HI_GRY}\$ ${RST}"
 
 PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit}${promptEnd}"
