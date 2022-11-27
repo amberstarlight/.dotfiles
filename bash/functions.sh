@@ -86,11 +86,11 @@ git_all () {
 }
 
 git_current_branch() {
-  git rev-parse --abbrev-ref HEAD
+  git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 git_default_branch() {
-  git rev-parse --abbrev-ref origin/HEAD | cut -c8-
+  git rev-parse --abbrev-ref origin/HEAD 2> /dev/null | cut -c8-
 }
 
 is_ssh() {

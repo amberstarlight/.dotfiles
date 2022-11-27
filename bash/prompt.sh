@@ -48,7 +48,7 @@ hostColour() {
 promptTime="${HI_GRY}${DATE} ${TIME}${RST}"
 promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}$(hostColour)${HOST}${RST}"
 promptDir="${BLD}${HI_RED}${WDIR}${RST}"
-promptGit="${HI_CYN}(\$(git_current_branch))${RST}"
+promptGit="${HI_CYN}\$(git_current_branch)${RST}"
 promptEnd="\n${HI_GRY}\$ ${RST}"
 
 PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit}${promptEnd}"
