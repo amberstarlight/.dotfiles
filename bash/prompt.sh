@@ -31,11 +31,11 @@ DIM="\[$(tput dim)\]"
 RST="\[$(tput sgr0)\]"
 
 # bash special characters
-HOST="\h"
-USER="\u"
-WDIR="\w"
-DATE="\D{%Y-%m-%d}"
-TIME="\A"
+hostname="\h"
+username="\u"
+workdir="\w"
+mdate="\D{%Y-%m-%d}"
+mtime="\A"
 
 hostColour() {
   if is_ssh; then
@@ -45,9 +45,9 @@ hostColour() {
   fi
 }
 
-promptTime="${HI_GRY}${DATE} ${TIME}${RST}"
-promptHost="${ST_GRN}${USER}${RST}${HI_GRY}@${RST}$(hostColour)${HOST}${RST}"
-promptDir="${BLD}${HI_RED}${WDIR}${RST}"
+promptTime="${HI_GRY}${mdate} ${mtime}${RST}"
+promptHost="${ST_GRN}${username}${RST}${HI_GRY}@${RST}$(hostColour)${hostname}${RST}"
+promptDir="${BLD}${HI_RED}${workdir}${RST}"
 promptGit="${HI_CYN}\$(git_current_branch)${RST}"
 promptEnd="\n${HI_GRY}\$ ${RST}"
 
