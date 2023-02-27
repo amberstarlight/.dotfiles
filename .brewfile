@@ -32,3 +32,7 @@ brew "git"
 brew "nano"
 brew "nanorc"
 brew "stow"
+
+brew "ruby"
+brew "rbenv"
+brew "ruby-build"
