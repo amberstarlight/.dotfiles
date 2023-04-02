@@ -34,8 +34,6 @@ RST="\[$(tput sgr0)\]"
 hostname="\h"
 username="\u"
 workdir="\w"
-mdate="\D{%Y-%m-%d}"
-mtime="\A"
 
 hostColour() {
   if is_ssh; then
@@ -45,10 +43,10 @@ hostColour() {
   fi
 }
 
-promptTime="${HI_GRY}${mdate} ${mtime}${RST}"
+promptTime="${HI_GRY}$(date +%c)${RST}"
 promptHost="${ST_GRN}${username}${RST}${HI_GRY}@${RST}$(hostColour)${hostname}${RST}"
-promptDir="${BLD}${HI_RED}${workdir}${RST}"
-promptGit="${HI_CYN}\$(git_current_branch)${RST}"
-promptEnd="\n${HI_GRY}\$ ${RST}"
+promptDir="${BLD}${ST_RED}${workdir}${RST}"
+promptGit="${ST_CYN}\$(git_current_branch)${RST}"
+promptEnd="\n${HI_GRY}> ${RST}"
 
-PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit}${promptEnd}"
+PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit} ${promptEnd}"
