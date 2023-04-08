@@ -7,3 +7,4 @@ set linenumbers
 set mouse
 set autoindent
 set locking
+set constantshow
