@@ -93,8 +93,10 @@ git_default_branch() {
   git rev-parse --abbrev-ref origin/HEAD 2> /dev/null | cut -c8-
 }
 
+
+
 is_ssh() {
-  if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\)$ ]]; then
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
     return 0
   else
     return 1
