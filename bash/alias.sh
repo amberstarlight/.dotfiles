@@ -14,6 +14,7 @@ alias rm='rm -vI'
 
 # git
 alias gist='git st'
+alias gpm='git checkout main && git pull'
 
 # Terraform
 alias tf='terraform'
