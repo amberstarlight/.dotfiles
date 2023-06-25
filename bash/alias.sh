@@ -11,10 +11,12 @@ alias mv='mv -vi'
 alias nano='nano --rcfile ${NANO_RC_FILE}'
 alias path='echo -e ${PATH//:/\\n}'
 alias rm='rm -vI'
+alias hx='helix'
 
 # git
 alias gist='git st'
-alias gpm='git checkout main && git pull'
+alias gy='git checkout main && git pull'
+# gpm conflicts with general purpose mouse
 
 # Terraform
 alias tf='terraform'

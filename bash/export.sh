@@ -16,3 +16,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add ../bin so we can use sync-dotfiles anywhere
 export PATH="$PATH:$HOME/.dotfiles/bin"
+
+export DOTFILES_DIR="$HOME/.dotfiles"
