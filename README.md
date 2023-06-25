@@ -24,7 +24,7 @@ you're on your own.
 
 | Use case          | Program                                        |
 | ----------------- | ---------------------------------------------- |
-| Terminal emulator | [Bash](https://www.gnu.org/software/bash/)     |
+| Shell             | [Bash](https://www.gnu.org/software/bash/)     |
 | Text editing      | [Helix](https://helix-editor.com/)             |
 | Dotfile linking   | [GNU Stow](https://www.gnu.org/software/stow/) |
 | Backups           | [Borg](https://www.borgbackup.org/)            |
