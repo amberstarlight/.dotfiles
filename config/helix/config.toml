@@ -1,0 +1,19 @@
+[editor]
+# line-number = "relative"
+bufferline = "always"
+cursorline = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name", "file-modification-indicator"]
+right = ["file-type", "selections", "position", "file-encoding"]
+separator = "|"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.whitespace.render]
+tab = "all"

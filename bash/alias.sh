@@ -11,7 +11,7 @@ alias mv='mv -vi'
 alias nano='nano --rcfile ${NANO_RC_FILE}'
 alias path='echo -e ${PATH//:/\\n}'
 alias rm='rm -vI'
-alias hx='helix'
+alias hx='helix --config $DOTFILES_DIR/config/helix/config.toml'
 
 # git
 alias gist='git st'

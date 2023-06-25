@@ -16,7 +16,6 @@
   gpgsign = true
 
 [core]
-  editor = "nano --rcfile $NANO_RC_FILE"
   excludesfile = "$HOME/.gitignore"
 
 [gpg]
