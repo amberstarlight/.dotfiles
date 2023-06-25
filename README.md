@@ -13,6 +13,24 @@ bin/sync-dotfiles
 > **Note**
 > Darwin systems need [`homebrew`](https://brew.sh/).
 
+## Programs
+
+To get the best/full functionality out of my dotfiles, you'll need the following
+programs. They are most likely available in your package manager, if not already
+installed on your system. If you're using a Darwin (macOS) system, install a
+package manager first, then update your copy of bash to a version made in the
+current decade. If you're using Windows, install Linux instead. Alternatively,
+you're on your own.
+
+| Use case          | Program                                        |
+| ----------------- | ---------------------------------------------- |
+| Terminal emulator | [Bash](https://www.gnu.org/software/bash/)     |
+| Text editing      | [Helix](https://helix-editor.com/)             |
+| Dotfile linking   | [GNU Stow](https://www.gnu.org/software/stow/) |
+| Backups           | [Borg](https://www.borgbackup.org/)            |
+
 ## Update
 
-As `~/.dotfiles/bin` is added to `PATH`, you can run `sync-dotfiles` from anywhere.
+As `~/.dotfiles/bin` is added to `PATH`, you can run `sync-dotfiles` from anywhere
+to pull changes from `main`. After that, you'll need to run `exec bash` to force
+bash to reload config.
