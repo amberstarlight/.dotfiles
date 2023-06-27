@@ -18,3 +18,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 export DOTFILES_DIR="$HOME/.dotfiles"
+export HELIX_CONFIG="$DOTFILES_DIR/config/helix/config.toml"

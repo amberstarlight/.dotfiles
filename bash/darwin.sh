@@ -4,13 +4,14 @@
 # darwin.sh
 #
 
-export EDITOR=/usr/local/bin/nano
-export GIT_EDITOR=/usr/local/bin/nano # eventually helix!
-export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/.brewfile"
-export NANO_RC_FILE="${HOME}/.dotfiles/.nanorc.darwin"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH"
+alias hx='hx --config $HELIX_CONFIG'
 
-alias hx='hx --config ${DOTFILES_DIR}/config/helix/config.toml'
+export VISUAL="hx --config $HELIX_CONFIG"
+export EDITOR="$VISUAL"
+export GIT_EDITOR="$VISUAL"
+
+export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/.brewfile"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH"
 
 # todo: make PATH up from an array/list
 eval "$(rbenv init - bash)"
