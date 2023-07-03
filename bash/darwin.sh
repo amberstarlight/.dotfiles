@@ -13,3 +13,5 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local
 
 # todo: make PATH up from an array/list
 eval "$(rbenv init - bash)"
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"

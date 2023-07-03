@@ -27,6 +27,7 @@ brew "wget"
 
 brew "bash"
 brew "glib"
+brew "bash-completion"
 
 brew "git"
 brew "nano"
