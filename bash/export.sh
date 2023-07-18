@@ -16,6 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add ../bin so we can use sync-dotfiles anywhere
 export PATH="$PATH:$HOME/.dotfiles/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export DOTFILES_DIR="$HOME/.dotfiles"
 export HELIX_CONFIG="$DOTFILES_DIR/config/helix/config.toml"
