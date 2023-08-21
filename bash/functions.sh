@@ -93,8 +93,6 @@ git_default_branch() {
   git rev-parse --abbrev-ref origin/HEAD 2> /dev/null | cut -c8-
 }
 
-
-
 is_ssh() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
     return 0
@@ -111,4 +109,10 @@ optional_s () {
   if [ ! "$1" -eq 1 ]; then
     env echo -n "s";
   fi
+}
+
+prune_git_branches() {
+  git branch --merged >/tmp/merged-branches && \
+  hx /tmp/merged-branches && \
+  xargs git branch -d </tmp/merged-branches
 }
