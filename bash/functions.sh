@@ -112,7 +112,8 @@ optional_s () {
 }
 
 prune_git_branches() {
-  git branch --merged >/tmp/merged-branches && \
+  git branch --merged | grep -v main >/tmp/merged-branches && \
   hx /tmp/merged-branches && \
-  xargs git branch -d </tmp/merged-branches
+  xargs git branch -d </tmp/merged-branches \
+  && git fetch -pv
 }
