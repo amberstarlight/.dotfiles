@@ -1,3 +1,5 @@
+theme = "boo_berry"
+
 [editor]
   bufferline = "always"
   cursorline = true
