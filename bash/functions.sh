@@ -65,3 +65,12 @@ prune_git_branches() {
 mktouch() {
   mkdir -p "$(dirname "$1")" && touch "$1"
 }
+
+file_addition_year () {
+  local file
+  local date
+
+  file=$1
+  date=$(git log --diff-filter=A --follow --format=%as "$file")
+  echo "${date:0:4}"
+}
