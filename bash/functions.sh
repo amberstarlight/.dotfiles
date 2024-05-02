@@ -19,7 +19,8 @@ dot_clean () {
     -iname ".apdisk"                                 \
   \) -delete -print | wc -l);
 
-  env echo -n "Processed $deleted_count item$(optional_s "$deleted_count")."
+  # shellcheck disable=SC2086
+  printf "Processed %d item%s.\n" "$deleted_count" "$(optional_s $deleted_count)"
 }
 
 git_current_branch() {
