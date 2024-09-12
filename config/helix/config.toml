@@ -23,3 +23,6 @@ theme = "boo_berry"
   render = true
   character = "│"
   skip-levels = 1
+
+[keys.normal]
+  C-t = ":toggle file-picker.git-ignore"
