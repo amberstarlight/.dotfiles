@@ -13,7 +13,7 @@ alias rm='rm -vI'
 
 # git
 alias gist='git st'
-alias gy='git checkout main && git pull'
+alias gy='git checkout $(git_default_branch) && git pull'
 # gpm conflicts with general purpose mouse
 
 # Terraform
