@@ -3,45 +3,66 @@
 # https://systemcrafters.net/managing-your-dotfiles/using-gnu-stow/
 # Sync dotfiles repo and ensure that dotfiles are tangled correctly afterward
 
-BLUE='\033[1;34m'
+BLUE='\033[1;36m'
 RED='\033[1;30m'
 NC='\033[0m'
+
+printInColour () {
+  local colour=$1
+  local text=$2
+  local newline="${3:=false}"
+
+  local print="${colour}${text}${NC}"
+  if $newline; then
+    print="${print}\n"
+  fi
+
+  printf '%b' "${print}"
+}
+
+function blam {
+  printInColour "$BLUE" "done" true
+}
 
 # Navigate to the directory of this script (generally ~/.dotfiles/.bin)
 cd "$(dirname "$(readlink -f "$0")")" || exit 1
 cd ..
 
-echo -e "${BLUE}Stashing existing changes...${NC}"
+printInColour "$BLUE" "Stashing existing changes..."
 stash_result=$(git stash push -m "sync-dotfiles: Before syncing dotfiles")
 needs_pop=1
 if [ "$stash_result" = "No local changes to save" ]; then
   needs_pop=0
 fi
+blam
 
-echo -e "${BLUE}Pulling updates from dotfiles repo...${NC}\n"
-git pull origin main
-echo
+printInColour "$BLUE" "Pulling updates from dotfiles repo..."
+git pull origin main >/dev/null 2>&1
+blam
 
 if [[ $needs_pop -eq 1 ]]; then
-  echo -e "${BLUE}Popping stashed changes...${NC}\n"
-  git stash pop
+  printInColour "Popping stashed changes..."
+  git stash pop >/dev/null 2>&1
+  blam
 fi
 
 unmerged_files=$(git diff --name-only --diff-filter=U)
 if [[ -n $unmerged_files ]]; then
-  echo -e "${RED}The following files have merge conflicts after popping the stash:${NC}\n"
+  printInColour "$RED" "The following files have merge conflicts after popping the stash:" true
   printf %"s\n" "$unmerged_files"  # Ensure newlines are printed
 else
   # Run stow to ensure all new dotfiles are linked
-  echo -e "${BLUE}Stowing files...${NC}\n"
-  stow .
+  printInColour "$BLUE" "Stowing files..."
+  stow . >/dev/null 2>&1
+  blam
 fi
 
-echo -e "${BLUE}Dotfiles updated. Source ~/.bashrc to use latest.${NC}"
+printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
 
 if [ "$(uname)" == "Darwin" ]; then
-  echo -e "${BLUE}Updating brew packages...${NC}"
-  brew bundle install
+  printInColour "$BLUE" "Checking Brewfile dependencies..."
+  brew bundle check
+  blam
 fi
 
 exit 0
