@@ -10,7 +10,7 @@ NC='\033[0m'
 printInColour () {
   local colour=$1
   local text=$2
-  local newline="${3:=false}"
+  local newline="${3:-false}"
 
   local print="${colour}${text}${NC}"
   if $newline; then
@@ -30,9 +30,10 @@ cd ..
 
 printInColour "$BLUE" "Stashing existing changes..."
 stash_result=$(git stash push -m "sync-dotfiles: Before syncing dotfiles")
-needs_pop=1
 if [ "$stash_result" = "No local changes to save" ]; then
   needs_pop=0
+else
+  needs_pop=1
 fi
 blam
 
@@ -41,7 +42,7 @@ git pull origin main >/dev/null 2>&1
 blam
 
 if [[ $needs_pop -eq 1 ]]; then
-  printInColour "Popping stashed changes..."
+  printInColour "$BLUE" "Popping stashed changes..."
   git stash pop >/dev/null 2>&1
   blam
 fi
