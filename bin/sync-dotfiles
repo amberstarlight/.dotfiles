@@ -4,7 +4,7 @@
 # Sync dotfiles repo and ensure that dotfiles are tangled correctly afterward
 
 BLUE='\033[1;36m'
-RED='\033[1;30m'
+RED='\033[1;31m'
 NC='\033[0m'
 
 printInColour () {
@@ -62,8 +62,12 @@ printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
 
 if [ "$(uname)" == "Darwin" ]; then
   printInColour "$BLUE" "Checking Brewfile dependencies..."
-  brew bundle check
+  brew_bundle=$(brew bundle check 2>&1)
   blam
+  if echo "${brew_bundle}" | grep -q "can't"; then
+    printInColour "$RED" "\nBrewfile dependencies not satisfied. Run \`brew bundle install\`."
+    exit 1
+  fi
 fi
 
 exit 0
