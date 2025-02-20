@@ -21,3 +21,6 @@ alias tfp='tf plan'
 alias tfa='tf apply'
 alias tfd='tf destroy'
 alias tfo='tf output'
+
+# Granted
+alias assume='. assume'
