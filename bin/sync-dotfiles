@@ -58,6 +58,11 @@ else
   blam
 fi
 
+terraform_plugin_dir="$HOME/.terraform.d/plugin-cache"
+if [ ! -d "$terraform_plugin_dir" ]; then
+  mkdir "$terraform_plugin_dir"
+fi
+
 printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
 
 if [ "$(uname)" == "Darwin" ]; then
