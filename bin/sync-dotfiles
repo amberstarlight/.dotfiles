@@ -63,8 +63,6 @@ if [ ! -d "$terraform_plugin_dir" ]; then
   mkdir "$terraform_plugin_dir"
 fi
 
-printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
-
 if [ "$(uname)" == "Darwin" ]; then
   printInColour "$BLUE" "Checking Brewfile dependencies..."
   brew_bundle=$(brew bundle check 2>&1)
@@ -75,4 +73,11 @@ if [ "$(uname)" == "Darwin" ]; then
   fi
 fi
 
+if [ "$(uname)" == "Linux" ]; then
+  printInColour "$BLUE" "Copying systemd unit files..."
+  cp --update=older "$HOME/.dotfiles/config/systemd/user/"* "$HOME/.config/systemd/user"
+  blam
+fi
+
+printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
 exit 0
