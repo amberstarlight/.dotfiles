@@ -1,0 +1,10 @@
+[Unit]
+Description=System backup with Borg
+
+[Timer]
+OnCalendar=daily UTC
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

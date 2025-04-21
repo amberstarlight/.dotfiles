@@ -1,0 +1,8 @@
+[Unit]
+Description=System backup with Borg
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=30
+ExecStart=~/git/backup/backup.sh |& tee -a "~/.log/borg-$(hostname)-$(date +"$Y%-%m-%d").log"
