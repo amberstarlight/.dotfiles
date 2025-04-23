@@ -5,4 +5,4 @@ Description=System backup with Borg
 Type=simple
 Restart=on-failure
 RestartSec=30
-ExecStart=~/git/backup/backup.sh |& tee -a "~/.log/borg-$(hostname)-$(date +"$Y%-%m-%d").log"
+ExecStart=%h/git/backup/backup.sh |& tee -a "%h/.log/borg-$(hostname)-$(date +"$Y%-%m-%d").log"

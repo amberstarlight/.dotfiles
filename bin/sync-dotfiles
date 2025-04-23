@@ -76,6 +76,7 @@ fi
 if [ "$(uname)" == "Linux" ]; then
   printInColour "$BLUE" "Copying systemd unit files..."
   cp --update=older "$HOME/.dotfiles/config/systemd/user/"* "$HOME/.config/systemd/user"
+  systemctl daemon-reload
   blam
 fi
 
