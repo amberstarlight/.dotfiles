@@ -1,8 +1,9 @@
 [Unit]
 Description=System backup with Borg
+After=network-online.target
 
 [Timer]
-OnCalendar=daily UTC
+OnBootSec=300
 Persistent=true
 RandomizedDelaySec=300
 
