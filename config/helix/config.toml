@@ -26,5 +26,9 @@ theme = "everforest_light"
   character = "│"
   skip-levels = 1
 
+[editor.lsp]
+  display-messages = true
+  display-inlay-hints = true
+
 [keys.normal]
   C-t = ":toggle file-picker.git-ignore"
