@@ -1,0 +1,6 @@
+"ui.background" = "white"
+"ui.text" = "black"
+
+[palette]
+white = "#ffffff"
+black = "#000000"

@@ -19,4 +19,3 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export DOTFILES_DIR="$HOME/.dotfiles"
-export HELIX_CONFIG="$DOTFILES_DIR/config/helix/config.toml"

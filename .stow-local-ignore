@@ -25,5 +25,4 @@ _darcs
 
 /bin
 /bash
-/config
 \.pre-commit-config.yaml

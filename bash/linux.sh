@@ -5,9 +5,9 @@
 #
 
 alias open='xdg-open'
-alias hx='helix --config ${DOTFILES_DIR}/config/helix/config.toml'
+alias hx='helix'
 
-export VISUAL="helix --config $DOTFILES_DIR/config/helix/config.toml"
+export VISUAL="helix"
 
 # set xdg base dirs on arch
 export XDG_CONFIG_HOME="$HOME/.config"
