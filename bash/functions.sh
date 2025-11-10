@@ -38,6 +38,17 @@ git_prune_branches() {
   && git fetch -pv
 }
 
+is_git_repo() {
+  git -C . rev-parse 2>/dev/null;
+  status=$?
+
+  if [ ! $status -eq 0 ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 is_ssh() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
     return 0
