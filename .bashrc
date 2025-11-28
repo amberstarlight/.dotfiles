@@ -28,3 +28,14 @@ files+=("finally")
 for file in "${files[@]}"; do
   source "$HOME/.dotfiles/bash/$file.sh"
 done
+
+if command -v tmux &> /dev/null \
+  && [ -n "$PS1" ]              \
+  && [[ ! "$TERM" =~ screen ]]  \
+  && [[ ! "$TERM" =~ tmux ]]    \
+  && [ -z "$TMUX" ]; then
+  read -p "Start tmux? [Y/n] " -r
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    tmux attach || tmux new -AD -t main -s main
+  fi
+fi
