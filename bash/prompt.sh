@@ -5,7 +5,7 @@
 # prompt.sh
 #
 
-# Standard colours
+# Standard foreground colours
 ST_BLK="\[$(tput setaf 0)\]"
 ST_RED="\[$(tput setaf 1)\]"
 ST_GRN="\[$(tput setaf 2)\]"
@@ -15,7 +15,7 @@ ST_PRP="\[$(tput setaf 5)\]"
 ST_CYN="\[$(tput setaf 6)\]"
 ST_GRY="\[$(tput setaf 7)\]"
 
-# High-intensity colours
+# High-intensity foreground colours
 HI_GRY="\[$(tput setaf 8)\]"
 HI_RED="\[$(tput setaf 9)\]"
 HI_GRN="\[$(tput setaf 10)\]"
@@ -28,39 +28,50 @@ HI_WHT="\[$(tput setaf 15)\]"
 # tput capabilities
 BLD="\[$(tput bold)\]"
 DIM="\[$(tput dim)\]"
+REV="\[$(tput rev)\]"
 RST="\[$(tput sgr0)\]"
 
-hostColour() {
-  if is_ssh; then
-    echo "${HI_BLU}"
+host() {
+  local colour
+  local label="$"
+  local text="\h"
+
+  if was_error "$1"; then
+    colour=${HI_RED}
+    label="!"
+  elif is_root; then
+    colour=${ST_PRP}
+    label="#"
+  elif is_ssh; then
+    colour=${ST_BLU}
+    text="\u@\h"
   else
-    echo "${ST_GRN}"
+    colour=${ST_GRN}
   fi
+
+  echo "${REV}${colour}${label} ${text} ${RST}"
 }
 
-exitStatus() {
-  if [[ "$1" -ne 0 ]]; then
-    echo "${HI_RED}"
+was_error() {
+  if [[ "$1" -ne 0 && "$1" -ne 130 ]]; then
+    return 0;
   else
-    echo "${ST_GRN}"
+    return 1;
   fi
 }
 
 generatePrompt() {
-  local exit_status="$?"
-  local workdir="\w"
-  local current_user="\u"
-  local hostname="\h"
+  status=$?
+  PROMPT_DIRTRIM=2
+  PS1=""
 
-  # do this first so we don't override $?
-  promptEnd="\n$(exitStatus exit_status)> ${RST}"
+  host="\n$(host "$status")"
+  time="$(date +%T)"
+  dir="${BLD}${ST_RED}\w${RST}"
+  git="${ST_CYN}$(git_current_branch)${RST}"
+  input="\n> ${RST}"
 
-  promptTime="${HI_GRY}$(date +%c)${RST}"
-  promptHost="${ST_GRN}${current_user}${RST}${HI_GRY}@${RST}$(hostColour)${hostname}${RST}"
-  promptDir="${BLD}${ST_RED}${workdir}${RST}"
-  promptGit="${ST_CYN}$(git_current_branch)${RST}"
-
-  PS1="\n${promptTime}\n${promptHost} ${promptDir} ${promptGit} ${promptEnd}"
+  PS1+="${host} ${time} ${dir} ${git}${input}"
 }
 
 PROMPT_COMMAND=generatePrompt

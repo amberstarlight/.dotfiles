@@ -50,11 +50,11 @@ is_git_repo() {
 }
 
 is_ssh() {
-  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
-    return 0
-  else
-    return 1
-  fi
+  [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]] || [[ -n "$SSH_CONNECTION" ]];
+}
+
+is_root() {
+  [[ $EUID -eq 0 ]];
 }
 
 mkcdir () {
