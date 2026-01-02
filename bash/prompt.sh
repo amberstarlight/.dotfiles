@@ -32,7 +32,7 @@ REV="\[$(tput rev)\]"
 RST="\[$(tput sgr0)\]"
 
 host() {
-  local colour
+  local colour=${ST_GRN}
   local label="$"
   local text="\h"
 
@@ -44,9 +44,10 @@ host() {
     label="#"
   elif is_ssh; then
     colour=${ST_BLU}
+  fi
+
+  if is_ssh; then
     text="\u@\h"
-  else
-    colour=${ST_GRN}
   fi
 
   echo "${REV}${colour}${label} ${text} ${RST}"
