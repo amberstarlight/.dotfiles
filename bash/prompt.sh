@@ -50,7 +50,7 @@ host() {
     text="\u@\h"
   fi
 
-  echo "${REV}${colour}${label} ${text} ${RST}"
+  echo "${REV}${colour} ${label} ${text} ${RST}"
 }
 
 was_error() {
