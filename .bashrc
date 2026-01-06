@@ -22,9 +22,6 @@ else
   files+=("darwin")
 fi
 
-# Things that must come last
-files+=("finally")
-
 for file in "${files[@]}"; do
   source "$HOME/.dotfiles/bash/$file.sh"
 done

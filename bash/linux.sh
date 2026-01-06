@@ -5,9 +5,6 @@
 #
 
 alias open='xdg-open'
-alias hx='helix'
-
-export VISUAL="helix"
 
 # set xdg base dirs on arch
 export XDG_CONFIG_HOME="$HOME/.config"
