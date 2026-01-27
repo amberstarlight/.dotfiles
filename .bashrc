@@ -32,7 +32,9 @@ if command -v tmux &> /dev/null \
   && [[ ! "$TERM" =~ tmux ]]    \
   && [ -z "$TMUX" ]; then
   read -p "Start tmux? [Y/n] " -r
-  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  if [[ $REPLY =~ ^[Nn]$ ]]; then
+    :
+  else
     tmux attach || tmux new -AD -t main -s main
   fi
 fi
