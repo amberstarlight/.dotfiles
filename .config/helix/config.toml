@@ -1,4 +1,4 @@
-theme = "base16_transparent"
+theme = "material_oceanic"
 
 [editor]
   bufferline = "always"

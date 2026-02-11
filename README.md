@@ -29,6 +29,10 @@ you're on your own.
 | Dotfile linking   | [GNU Stow](https://www.gnu.org/software/stow/) |
 | Backups           | [Borg](https://www.borgbackup.org/)            |
 
+### Terminal theming
+
+For the best experience, set your terminal theme to `solarized_dark`.
+
 ## Update
 
 As `~/.dotfiles/bin` is added to `PATH`, you can run `sync-dotfiles` from anywhere
