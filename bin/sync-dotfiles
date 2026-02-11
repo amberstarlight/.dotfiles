@@ -60,7 +60,7 @@ fi
 
 terraform_plugin_dir="$HOME/.terraform.d/plugin-cache"
 if [ ! -d "$terraform_plugin_dir" ]; then
-  mkdir "$terraform_plugin_dir"
+  mkdir -p "$terraform_plugin_dir"
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -72,14 +72,6 @@ if [ "$(uname)" == "Darwin" ]; then
     exit 1
   fi
 fi
-
-# TODO: review systemd units
-# if [ "$(uname)" == "Linux" ]; then
-#   printInColour "$BLUE" "Copying systemd unit files..."
-#   cp --update=older "$HOME/.dotfiles/.config/systemd/user/"* "$HOME/.config/systemd/user"
-#   systemctl daemon-reload
-#   blam
-# fi
 
 printInColour "$BLUE" "Dotfiles updated! Source ~/.bashrc to use latest." true
 exit 0
