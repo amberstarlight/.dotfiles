@@ -1,4 +1,4 @@
-theme = "everforest_light"
+theme = "base16_transparent"
 
 [editor]
   bufferline = "always"
