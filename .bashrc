@@ -31,10 +31,9 @@ if command -v tmux &> /dev/null \
   && [[ ! "$TERM" =~ screen ]]  \
   && [[ ! "$TERM" =~ tmux ]]    \
   && [ -z "$TMUX" ]; then
-  read -p "Start tmux? [Y/n] " -r
-  if [[ $REPLY =~ ^[Nn]$ ]]; then
-    :
-  else
+  read -p "Start tmux? [Y/n] " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Nn]$ ]]; then
     tmux attach || tmux new -AD -t main -s main
   fi
 fi
