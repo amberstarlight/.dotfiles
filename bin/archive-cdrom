@@ -1,0 +1,30 @@
+#!/bin/bash
+
+file=$1
+
+if [ -z "${file}" ]; then
+  echo "Must provide filename to output to!"
+  exit 1
+fi
+
+device=/dev/cdrom
+blocksize=2048
+blocks=$(isosize -d $blocksize $device)
+
+md5cd=$(dd if=$device bs=$blocksize count="$blocks" status=progress | md5sum)
+echo "CD MD5 is:" "$md5cd"
+
+dd if=$device of="$file" bs=$blocksize count="$blocks" status=progress
+
+md5iso=$(cat "$file" | md5sum)
+echo "ISO MD5 is:" "$md5iso"
+
+echo "Archive complete, ISO saved to file: '${file}'"
+
+if [ "${md5cd}" == "${md5iso}" ]; then
+  echo "Checksums match!"
+  exit 0
+else
+  echo "WARN: Checksums DO NOT MATCH. Maybe the CD-ROM is damaged?"
+  exit 2
+fi
