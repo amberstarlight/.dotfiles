@@ -13,7 +13,12 @@ alias gy='git checkout $(git_default_branch) && git pull'
 # gpm conflicts with general purpose mouse
 
 # Terraform
-alias tf='terraform'
+if command -v terraform &> /dev/null; then
+  alias tf='terraform'
+elif command -v tofu &> /dev/null; then
+  alias tf='tofu'
+fi
+
 alias tfi='tf init'
 alias tff='tf fmt'
 alias tfv='tf validate'
