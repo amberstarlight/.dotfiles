@@ -8,10 +8,11 @@
   signingkey = 14E7B51AF7B30CA7
 
 [alias]
-  st = "status --short --branch"
-  br = "branch --all --verbose"
   amend = "commit --amend --no-edit"
+  br = "branch --all --verbose"
   gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+  st = "status --short --branch"
+  unstage = "restore --staged"
 
 [commit]
   gpgsign = true
