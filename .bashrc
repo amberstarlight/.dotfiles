@@ -26,6 +26,13 @@ for file in "${files[@]}"; do
   source "$HOME/.dotfiles/bash/$file.sh"
 done
 
+# if nvm is installed on the system, set it up
+if [ -d "${HOME}/.nvm" ]; then
+  export NVM_DIR="${HOME}/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
 if command -v tmux &> /dev/null \
   && [ -n "$PS1" ]              \
   && [[ ! "$TERM" =~ screen ]]  \
