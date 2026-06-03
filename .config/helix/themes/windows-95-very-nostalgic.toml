@@ -1,0 +1,54 @@
+# Windows 95 (Very nostalgic theme)
+
+# Originally by Ericson Willians
+# https://github.com/EricsonWillians/oldschool-theme/themes/windows-95-very-nostalgic-theme.json
+# License: GPLv3.0
+
+# Ported to Helix by amberstarlight
+
+"attribute" = "yellow"
+"comment" = { fg = "lime" }
+"constant.builtin" = { fg = "orange" }
+"constant.numeric" = { fg = "pink" }
+"function" = { fg = "pink" }
+"keyword" = { fg = "aqua" }
+"keyword.storage" = { fg = "aqua" }
+"operator" = "aqua"
+"punctuation.bracket" = "yellow"
+"punctuation.special" = "pink"
+"string" = "yellow"
+"tag" = { fg = "pink" }
+"variable" = "white"
+
+"diff.plus.gutter" = { fg = "lime" }
+"diff.minus.gutter" = { fg = "darkred"}
+"diff.delta.gutter" = { fg = "yellow" }
+
+"ui.background" = { bg = "teal5" }
+"ui.cursor" = { fg = "white", bg = "darkred" }
+"ui.linenr" = { fg = "teal1" }
+"ui.linenr.selected" = { bg = "teal3" }
+"ui.selection" = { bg = "darkred" }
+"ui.cursorline.primary" = { bg = "teal3" }
+"ui.virtual.indent-guide" = { fg = "teal1" }
+"ui.virtual.ruler" = { bg = "teal2" }
+
+[palette]
+teal1 = "#008080"
+teal2 = "#005A5A"
+teal3 = "#005252"
+teal4 = "#004A4A"
+teal5 = "#003333"
+
+aqua    = "#00FFFF"
+blue    = "#0000FF"
+darkred = "#882222"
+lime    = "#00FF00"
+orange  = "#FF4500"
+pink    = "#FF00FF"
+yellow  = "#FFFF00"
+
+black     = "#000000"
+white     = "#FFFFFF"
+grey      = "#505050"
+lightgrey = "#CCCCCC"
