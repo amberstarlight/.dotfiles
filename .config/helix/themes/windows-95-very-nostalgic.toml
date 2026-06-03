@@ -21,14 +21,16 @@
 "variable" = "white"
 
 "diff.plus.gutter" = { fg = "lime" }
-"diff.minus.gutter" = { fg = "darkred"}
+"diff.minus.gutter" = { fg = "orange"}
 "diff.delta.gutter" = { fg = "yellow" }
 
 "ui.background" = { bg = "teal5" }
-"ui.cursor" = { fg = "white", bg = "darkred" }
+"ui.cursor" = { fg = "white", bg = "teal1" }
+"ui.cursor.primary" = { bg = "teal1" }
+"ui.cursor.match" = { fg = "orange" }
 "ui.linenr" = { fg = "teal1" }
 "ui.linenr.selected" = { bg = "teal3" }
-"ui.selection" = { bg = "darkred" }
+"ui.selection" = { bg = "teal1" }
 "ui.cursorline.primary" = { bg = "teal3" }
 "ui.virtual.indent-guide" = { fg = "teal1" }
 "ui.virtual.ruler" = { bg = "teal2" }
@@ -40,13 +42,12 @@ teal3 = "#005252"
 teal4 = "#004A4A"
 teal5 = "#003333"
 
-aqua    = "#00FFFF"
-blue    = "#0000FF"
-darkred = "#882222"
-lime    = "#00FF00"
-orange  = "#FF4500"
-pink    = "#FF00FF"
-yellow  = "#FFFF00"
+aqua   = "#00FFFF"
+blue   = "#0000FF"
+lime   = "#00FF00"
+orange = "#FF4500"
+pink   = "#FF00FF"
+yellow = "#FFFF00"
 
 black     = "#000000"
 white     = "#FFFFFF"
