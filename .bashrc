@@ -33,14 +33,18 @@ if [ -d "${HOME}/.nvm" ]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
-if command -v tmux &> /dev/null \
-  && [ -n "$PS1" ]              \
-  && [[ ! "$TERM" =~ screen ]]  \
-  && [[ ! "$TERM" =~ tmux ]]    \
-  && [ -z "$TMUX" ]; then
-  read -p "Start tmux? [Y/n] " -n 1 -r
-  echo
-  if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-    tmux attach || tmux new -AD -t main -s main
+start() {
+  if command -v tmux &> /dev/null \
+    && [ -n "$PS1" ]              \
+    && [[ ! "$TERM" =~ screen ]]  \
+    && [[ ! "$TERM" =~ tmux ]]    \
+    && [ -z "$TMUX" ]; then
+    read -p "Start tmux? [Y/n] " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Nn]$ ]]; then
+      tmux attach || tmux new -AD -t main -s main
+    fi
   fi
-fi
+}
+
+start
