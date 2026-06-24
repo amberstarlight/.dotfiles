@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+dotfiles__usage() {
+  cat <<EOF
+usage: dotfiles <command> [parameters...]
+
+To see the full help text, run:
+
+dotfiles help
+dotfiles <command> help
+EOF
+}
+
+dotfiles__help() {
+  cat <<EOF
+dotfiles helper script
+v0.0.1
+
+commands:
+  help - shows help
+  sync - fetch changes from upstream and attempt to apply them
+EOF
+}
+
+dotfiles__sync() {
+  sync-dotfiles
+}
+
+command=$1;
+shift;
+
+if [[ -z $command ]]; then
+  dotfiles__usage
+fi
+
+if type "dotfiles__$command" >/dev/null 2>&1; then
+  "dotfiles__$command" "$@"
+else
+  echo "Unknown command: $command"
+  dotfiles__usage
+  exit 1
+fi
