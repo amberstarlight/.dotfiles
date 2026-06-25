@@ -31,9 +31,7 @@ shift;
 
 if [[ -z $command ]]; then
   dotfiles__usage
-fi
-
-if type "dotfiles__$command" >/dev/null 2>&1; then
+elif type "dotfiles__$command" >/dev/null 2>&1; then
   "dotfiles__$command" "$@"
 else
   echo "Unknown command: $command"
