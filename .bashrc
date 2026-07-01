@@ -33,6 +33,12 @@ if [ -d "${HOME}/.nvm" ]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
+# if rvm is installed on the system, set it up
+if [ -d "${HOME}/.rvm" ]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  export PATH="$PATH:$HOME/.rvm/bin"
+fi
+
 start() {
   if command -v tmux &> /dev/null \
     && [ -n "$PS1" ]              \
