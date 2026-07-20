@@ -1,126 +1,210 @@
-tap "azure/bicep"
-tap "cloudfoundry/tap"
 tap "common-fate/granted"
-tap "ekristen/tap"
 tap "hashicorp/tap"
-tap "minamijoyo/tfupdate"
-tap "warrensbox/tap"
-brew "act"
-brew "adr-tools"
-brew "jpeg-xl"
-brew "asdf"
+# Automatic configure script builder
 brew "autoconf"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Library for command-line editing
 brew "readline"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 3.2
 brew "bash-completion"
+# GNU binary tools for native development
 brew "binutils"
+# Core application library for C
 brew "glib"
+# GNU multiple precision arithmetic library
 brew "gmp"
+# GNU compiler collection
 brew "gcc"
+# YAML Parser
 brew "libyaml"
+# Prevent cloud misconfigurations during build-time for IaC tools
 brew "checkov"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Display user-friendly message boxes from shell scripts
 brew "dialog", link: false
+# File comparison utilities
 brew "diffutils"
+# Isolated development environments using Docker
 brew "docker-compose", link: false
+# Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
+# Classic UNIX line editor
 brew "ed"
+# Collection of reusable C++ library artifacts developed at Facebook
 brew "folly"
+# C++14 implementation of the TLS-1.3 standard
 brew "fizz"
+# Modular, composable client/server abstractions framework
 brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
 brew "fbthrift"
+# Thrift functions for querying information from a service
 brew "fb303"
+# Shared library for Watchman and Eden projects
 brew "edencommon"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU awk utility
 brew "gawk"
+# New file format for still image compression
+brew "jpeg-xl"
+# Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# C code prettifier
 brew "gnu-indent"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU version of the tar archiving utility
 brew "gnu-tar"
+# GNU implementation of which utility
 brew "gnu-which"
+# International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
+# GNU Transport Layer Security (TLS) Library
 brew "gnutls"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Generate introspection data for GObject libraries
 brew "gobject-introspection"
+# Language server for the Go language
 brew "gopls"
+# OpenType text shaping engine
 brew "harfbuzz"
+# Development kit for the Java programming language
 brew "openjdk"
+# Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
+# Framework for layout and rendering of i18n text
 brew "pango"
+# Library to render SVG files using Cairo
 brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# GNU grep, egrep and fgrep
 brew "grep"
+# Popular GNU data compression program
 brew "gzip"
+# Smarter Dockerfile linter to validate best practices
 brew "hadolint"
+# Post-modern modal text editor
 brew "helix"
+# Improved top (interactive process viewer)
 brew "htop"
-brew "httpie"
-brew "hugo"
-brew "libheif"
-brew "imagemagick"
-brew "inframap"
-brew "jmeter"
+# JSON output from a shell
 brew "jo"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
-brew "libass"
+# Portable Foreign Function Interface library
 brew "libffi"
+# Light HTTP/1.1 server library
 brew "libmicrohttpd"
+# Postgres C API library
 brew "libpq"
+# General purpose TCP-IP emulator
 brew "libslirp"
-brew "lima"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node", link: false
+# CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
-brew "minikube"
+# QUIC transport protocol implementation
 brew "mvfst"
+# Utility for managing network connections
 brew "netcat"
+# HTTP load generator, inspired by rakyll/hey with tui animation
 brew "oha"
+# Open source, general-purpose policy engine
 brew "opa"
-brew "openjdk@11"
+# Development kit for the Java programming language
 brew "openjdk@17"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+# 7-Zip (high compression file archiver) implementation
 brew "p7zip"
+# Python dependency management tool
 brew "pipenv"
+# Object-relational database system
 brew "postgresql@18"
+# Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Python Language Server for the Language Server Protocol
 brew "python-lsp-server"
+# Generic machine emulator and virtualizer
 brew "qemu"
+# Tool Command Language
 brew "tcl-tk"
-brew "r"
-brew "ruby"
+# Software environment for statistical computing
+brew "r", link: false
+# Install various Ruby versions and implementations
 brew "ruby-build"
+# Ruby version manager
+brew "rbenv"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Powerful, clean, object-oriented scripting language
+brew "ruby", link: false
+# Opinionated language server for Ruby
+brew "ruby-lsp"
+# Terminal multiplexer with VT100/ANSI terminal emulation
 brew "screen"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# User interface to the TELNET protocol
 brew "telnet"
+# Tool to generate documentation from Terraform modules
 brew "terraform-docs"
+# Thin wrapper for Terraform e.g. for locking state
 brew "terragrunt"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Language Server Protocol implementation for TypeScript wrapping tsserver
 brew "typescript-language-server"
+# List detailed info about USB devices
 brew "usbutils"
+# High-performance data structure server that primarily serves key/value workloads
+brew "valkey"
+# Tool for creating isolated virtual python environments
 brew "virtualenv"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Watch files and take action when they change
 brew "watchman"
+# Display word differences between text files
 brew "wdiff"
+# Internet file retriever
 brew "wget"
+# JavaScript package manager
 brew "yarn", link: false
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# General-purpose lossless data-compression library
 brew "zlib"
-brew "cloudfoundry/tap/bosh-cli"
-brew "common-fate/granted/granted"
-brew "hashicorp/tap/terraform"
-brew "hashicorp/tap/terraform-ls"
 cask "font-departure-mono"
 cask "font-iosevka"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-cask "keybase"
+# Customise mouse behavior
 cask "linearmouse"
+# Music streaming service
 cask "spotify"
 go "github.com/golangci/golangci-lint/cmd/golangci-lint"
+npm "corepack"
