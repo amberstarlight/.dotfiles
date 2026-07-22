@@ -29,3 +29,16 @@ alias tfo='tf output'
 
 # Granted
 alias assume='. assume'
+
+# clipboard harmonisation
+if [ "$(uname)" == "Linux" ]; then
+  if command -v xclip &> /dev/null; then
+    alias copy="xclip -sel clip"
+    alias paste="xclip -sel clip -o"
+  fi
+fi
+
+if [ "$(uname)" == "Darwin" ]; then
+  alias copy="pbcopy"
+  alias paste="pbpaste"
+fi
