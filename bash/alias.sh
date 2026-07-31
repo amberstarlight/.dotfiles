@@ -36,6 +36,11 @@ if [ "$(uname)" == "Linux" ]; then
     alias copy="xclip -sel clip"
     alias paste="xclip -sel clip -o"
   fi
+
+  if command -v wl-copy &> /dev/null; then
+    alias copy="wl-copy"
+    alias paste="wl-paste"
+  fi
 fi
 
 if [ "$(uname)" == "Darwin" ]; then

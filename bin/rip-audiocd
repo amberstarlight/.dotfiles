@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# A script to rip Audio CDs
+# Makes some assumptions about having things installed
+
+# initialise options
+DRY_RUN=""
+CONVERT_TO_FLAC=""
+AUTO_UPDATE_TAGS=""
+
+BACKTITLE="Rip Audio CD"
+
+main() {
+  BASE_DIR=$(                                 \
+    dialog                                    \
+      --clear                                 \
+      --backtitle "$BACKTITLE"                \
+      --title "Select directory to rip into:" \
+      --dselect ~/ 15 50                      \
+      3>&1 1>&2 2>&3 3>&-                     \
+  )
+
+  CD_META_RAW=$(                      \
+    dialog                            \
+      --clear                         \
+      --backtitle "$BACKTITLE"        \
+      --output-separator "|"          \
+      --form "Metadata" 15 70 10      \
+      "Album title:" 1 1 "" 1 15 40 0 \
+      "Artist:" 2 1 "" 2 15 40 0      \
+      "Year:" 3 1 "" 3 15 40 0        \
+      3>&1 1>&2 2>&3 3>&-             \
+  )
+
+  OPTIONS=$(                                     \
+    dialog                                       \
+      --clear                                    \
+      --backtitle "$BACKTITLE"                   \
+      --title "Processing Options"               \
+      --checklist "Select Options:" 15 70 4      \
+      1 "Dry run (prints input, then exits)" off \
+      2 "Convert to FLAC" on                     \
+      3 "Auto update ID3 tags" off               \
+      3>&1 1>&2 2>&3 3>&-                        \
+  )
+
+  IFS="|" read -ra CD_METADATA <<< "${CD_META_RAW}";
+  unset IFS;
+
+  ALBUM="${CD_METADATA[0]}"
+  ARTIST="${CD_METADATA[1]}"
+  YEAR="${CD_METADATA[2]}"
+
+  FOLDER="${ARTIST} - ${ALBUM} (${YEAR})"
+
+  for opt in "${OPTIONS[@]}"; do
+    case ${opt} in
+    1)
+      DRY_RUN=true
+      ;;
+    2)
+      CONVERT_TO_FLAC=true
+      ;;
+    3)
+      AUTO_UPDATE_TAGS=true
+      ;;
+    esac
+  done
+
+  if $DRY_RUN; then
+    clear
+    echo "DRY_RUN enabled, stopping."
+    echo "Album: ${ALBUM}"
+    echo "Artist: ${ARTIST}"
+    echo "Year: ${YEAR}"
+    echo "Folder: \"${FOLDER}\""
+
+    if ${CONVERT_TO_FLAC}; then
+      echo "FLAC conversion enabled"
+    else
+      echo "FLAC conversion disabled"
+    fi
+
+    if $AUTO_UPDATE_TAGS; then
+      echo "Tag auto update enabled"
+    else
+      echo "Tag auto update disabled"
+    fi
+
+    exit 0
+  else
+    if ${CONVERT_TO_FLAC}; then FILES="*.flac"; else FILES="*.wav"; fi
+
+    cd "${BASE_DIR}" || exit 127
+    mkdir -p "${FOLDER}"
+    cd "${FOLDER}" || exit 127
+    cdparanoia -B
+
+    if $CONVERT_TO_FLAC; then
+      flac                    \
+        --compression-level-8 \
+        --delete-input-file   \
+        --warnings-as-errors  \
+        "${FILES}"
+    fi
+
+    kid3-cli                      \
+      -c "set artist '${ARTIST}'" \
+      -c "set album '${ALBUM}'"   \
+      -c "set date '${YEAR}'"     \
+      "${FILES}"
+
+    if $AUTO_UPDATE_TAGS; then
+      kid3-cli -c "autoimport" "${FILES}"
+    fi
+  fi
+}
+
+if dialog --clear                              \
+  --backtitle "$BACKTITLE"                     \
+  --title "Insert an audio CD into the drive." \
+  --yesno "Continue?" 10 40 ; then
+  main
+else
+  clear
+  echo "Ripping cancelled."
+  exit 0
+fi
