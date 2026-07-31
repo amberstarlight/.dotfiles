@@ -5,7 +5,7 @@ A repository to store my dotfiles and associated configuration. MIT Licensed.
 ## Install
 
 ```sh
-git clone git@github.com:amberstarlight/.dotfiles.git ~/.dotfiles
+git clone git@codeberg.org/amberstarlight/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 bin/sync-dotfiles
 ```
@@ -27,14 +27,9 @@ you're on your own.
 | Shell             | [Bash](https://www.gnu.org/software/bash/)     |
 | Text editing      | [Helix](https://helix-editor.com/)             |
 | Dotfile linking   | [GNU Stow](https://www.gnu.org/software/stow/) |
-| Backups           | [Borg](https://www.borgbackup.org/)            |
-
-### Terminal theming
-
-For the best experience, set your terminal theme to `solarized_dark`.
 
 ## Update
 
-As `~/.dotfiles/bin` is added to `PATH`, you can run `sync-dotfiles` from anywhere
-to pull changes from `main`. After that, you'll need to run `exec bash` to force
-bash to reload config.
+To update, use the `dotfiles` helper script. The command `sync` will fetch
+and attempt to apply updates to the configuration. Run `exec bash` once this
+has completed. For help, use `dotfiles help`.
