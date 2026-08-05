@@ -9,7 +9,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # git
 alias gist='git st'
-alias gy='git checkout $(git_default_branch) && git pull'
+alias gy='git checkout $(git_default_branch) && git pull && git gone'
 # gpm conflicts with general purpose mouse
 
 # Terraform
