@@ -30,8 +30,8 @@
 "ui.cursor.match" = { fg = "orange" }
 "ui.linenr" = { fg = "teal1" }
 "ui.linenr.selected" = { bg = "teal3" }
-"ui.selection" = { bg = "teal1" }
-"ui.cursorline.primary" = { bg = "teal3" }
+"ui.selection" = { bg = "teal2" }
+"ui.cursorline.primary" = { bg = "teal4" }
 "ui.virtual.indent-guide" = { fg = "teal1" }
 "ui.virtual.ruler" = { bg = "teal2" }
 
