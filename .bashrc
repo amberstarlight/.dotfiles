@@ -39,6 +39,11 @@ if [ -d "${HOME}/.rvm" ]; then
   export PATH="$PATH:$HOME/.rvm/bin"
 fi
 
+# if ruby is installed on the system, export gems path
+if command -v ruby &> /dev/null; then
+  export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 start() {
   if command -v tmux &> /dev/null \
     && [ -n "$PS1" ]              \
