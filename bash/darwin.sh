@@ -15,5 +15,13 @@ if [ -d "/usr/local/opt/ruby/bin" ]; then
   export PATH=$(gem environment gemdir)/bin:$PATH
 fi
 
+# configure rbenv
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init - --no-rehash bash)"
+fi
+
 # force libpq to not use GSS encryption
 export PGGSSENCMODE="disable"
+
+# docker desktop wants this
+export PATH="$PATH:${HOME}/.docker/bin"
